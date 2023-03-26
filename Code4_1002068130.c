@@ -37,6 +37,10 @@ int main(void)
     strcpy(DoThis, Token);
     DrawCommand = toupper(DoThis[0]);
 
+    if (((DrawCommand!= 'H' || DrawCommand!='V') ||  (DrawCommand!= 'P')) || (DrawCommand!='Q'))
+    {
+        printf("That draw command is unknown.");
+    }
 
 
 while  (((DrawCommand== 'H' || DrawCommand=='V') ||  (DrawCommand== 'P')) && (DrawCommand!='Q'))
@@ -67,7 +71,10 @@ while  (((DrawCommand== 'H' || DrawCommand=='V') ||  (DrawCommand== 'P')) && (Dr
     Token = strtok(UserInput, Delimeters);
     strcpy(DoThis, Token);
     DrawCommand = toupper(DoThis[0]);
-
+    if (((DrawCommand!= 'H' || DrawCommand!='V') ||  (DrawCommand!= 'P')) || (DrawCommand!='Q'))
+    {
+        printf("That draw command is unknown.");
+    }
 }
 
     return 0;
