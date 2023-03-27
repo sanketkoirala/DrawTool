@@ -1,4 +1,4 @@
-// Created by Sanket Koirala on 3/25/23.
+// Created by Sanket Koirala on 3/25/23. ID: 1002068130
 
 
 #include <stdio.h>
@@ -63,19 +63,27 @@ while  (((DrawCommand== 'H' || DrawCommand=='V') ||  (DrawCommand== 'P')) && (Dr
     length = atoi(Token);
 
     Token = strtok(NULL, Delimeters);
-
     strcpy(symbol, Token);
+//    if (*Token=='\\')
+//    {
+//     mark ='X';
+//    }
+//    else
     mark = symbol[0];
+
+    if ((x_index>=MyMapSize || y_index>=MyMapSize) || (((x_index+length-1)>MyMapSize) || ((y_index+length-1)>MyMapSize)))
+    {
+        printf("That draw command is out of range.");
+    }
+
 
     if (DrawCommand == 'P')
     {
         map[x_index][y_index] = mark;
-
     }
-    if (DrawCommand!='P')
-    {
+    else
         DrawLine(map, x_index, y_index, DrawCommand, length, mark);
-    }
+
     PrintMap(map, MyMapSize);
 
     printf("Enter draw command (enter Q to quit) q ");
