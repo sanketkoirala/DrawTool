@@ -37,9 +37,16 @@ int main(void)
     strcpy(DoThis, Token);
     DrawCommand = toupper(DoThis[0]);
 
-    if (((DrawCommand!= 'H' || DrawCommand!='V') ||  (DrawCommand!= 'P')) || (DrawCommand!='Q'))
+    if ((((DrawCommand != 'H' && DrawCommand != 'h') && (DrawCommand != 'V' && DrawCommand != 'v'))
+        && (DrawCommand != 'Q' && DrawCommand != 'q')) && (DrawCommand != 'P' && DrawCommand != 'p'))
     {
         printf("That draw command is unknown.");
+    }
+
+    if (DrawCommand == 'P')
+    {
+            map[x_index][y_index] = mark;
+
     }
 
 
@@ -60,8 +67,15 @@ while  (((DrawCommand== 'H' || DrawCommand=='V') ||  (DrawCommand== 'P')) && (Dr
     strcpy(symbol, Token);
     mark = symbol[0];
 
+    if (DrawCommand == 'P')
+    {
+        map[x_index][y_index] = mark;
 
-    DrawLine(map, x_index, y_index, DrawCommand, length, mark);
+    }
+    if (DrawCommand!='P')
+    {
+        DrawLine(map, x_index, y_index, DrawCommand, length, mark);
+    }
     PrintMap(map, MyMapSize);
 
     printf("Enter draw command (enter Q to quit) q ");
@@ -71,10 +85,12 @@ while  (((DrawCommand== 'H' || DrawCommand=='V') ||  (DrawCommand== 'P')) && (Dr
     Token = strtok(UserInput, Delimeters);
     strcpy(DoThis, Token);
     DrawCommand = toupper(DoThis[0]);
-    if (((DrawCommand!= 'H' || DrawCommand!='V') ||  (DrawCommand!= 'P')) || (DrawCommand!='Q'))
+    if ((((DrawCommand != 'H' && DrawCommand != 'h') && (DrawCommand != 'V' && DrawCommand != 'v'))
+         && (DrawCommand != 'Q' && DrawCommand != 'q')) && (DrawCommand != 'P' && DrawCommand != 'p'))
     {
         printf("That draw command is unknown.");
     }
+
 }
 
     return 0;
